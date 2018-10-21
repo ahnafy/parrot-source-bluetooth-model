@@ -1,0 +1,112 @@
+#!/bin/sh
+# ip-up
+#
+# (c) Parrot S.A.
+# 174, quai de Jemmapes
+# 75010 Paris
+# France
+# Website: http://www.parrot.com
+#
+# $Header: /soft/cvs/CommonSoft/ModMan/extra/ip-up,v 1.11 2011-05-05 10:15:58 jbdubois Exp $
+
+# Please no more oldschool shell scripting! It's 21st century!
+# Variable names are small cases, except global const in caps.
+# Use functions. Not alias!
+# Use $(...), not `...`.
+# Use ${foobar}, not $foobar.
+# Use local when possible.
+# Use readonly when possible.
+# For both portability and efficiency, use as much built-in as possible!
+
+#set -C # noclobber
+#set -e # errexit
+#set -n # noexec (just syntax checking)
+#set -u # nounset
+#set -v # verbose
+#set -x # xtrace
+
+# Script /etc/ppp/ip-up
+# called by pppd when the link is available for sending and receiving IP packets (that is, IPCP has come up).  
+# It is executed with the parameters: interface-name tty-device speed local-IP-address remote-IP-address ipparam
+
+# Get environment: vanilla Linux (Buildroot/Lucie) or Android/Raptor
+if [ -d /system ]; then
+	# deviant Linux (Android/Raptor)
+	readonly OS=RAPTOR
+	readonly OS_BIN_PREFIX=/system/xbin
+	readonly OS_SBIN_PREFIX=/system/xbin
+	export PATH=/sbin:/system/sbin:/system/bin:/system/xbin
+else
+	# vanilla Linux (Buildroot/Lucie)
+	readonly OS=LINUX
+	readonly OS_BIN_PREFIX=/bin
+	readonly OS_SBIN_PREFIX=/sbin
+	export PATH=/bin:/sbin:/usr/bin:/usr/sbin:
+fi
+
+# Get script arguments
+PPP_IFACE="${1}"			#The name of the network interface being used
+PPP_TTY_NAME="${2}"			#The name of the serial tty device being used
+PPP_SPEED="${3}"			#The baud rate of the tty device
+PPP_IPLOCAL="${4}"			#The IP address for the local end of the link
+PPP_IPREMOTE="${5}"			#The IP address for the remote end of the link
+PPP_IPPARAM="${6}"			#The Extra param value set in ipparam arg of pppd
+PPP_DNS1="${DNS1}"			#The first DNS server address supplied
+PPP_DNS2="${DNS2}"			#The second DNS server address supplied
+PPP_PEERNAME="${PEERNAME}"	#The authenticated name of the peer
+PPP_LINKNAME="${LINKNAME}"	#The logical name of the link, set with the linkname option
+
+# do stuff
+if [ "xRAPTOR" = x${OS} ]; then
+
+	# Android set properties
+	/system/bin/setprop "net.${PPP_IFACE}.local-ip"  "${PPP_IPLOCAL}"
+	/system/bin/setprop "net.${PPP_IFACE}.remote-ip" "${PPP_IPREMOTE}"
+	/system/bin/setprop "net.${PPP_IFACE}.dns1"      "${PPP_DNS1}"
+	/system/bin/setprop "net.${PPP_IFACE}.dns2"      "${PPP_DNS2}"
+
+else
+	# Linux
+	echo "${PPP_IPLOCAL}"  > /tmp/ppp/net.${PPP_IFACE}.local-ip
+	echo "${PPP_IPREMOTE}" > /tmp/ppp/net.${PPP_IFACE}.remote-ip
+	echo "${PPP_DNS1}"     > /tmp/ppp/net.${PPP_IFACE}.dns1
+	echo "${PPP_DNS2}"     > /tmp/ppp/net.${PPP_IFACE}.dns2
+fi
+
+# pppd interface created & up event id
+readonly PPP_EVT_IFUP="02"
+
+# Extract handle & message name from ipparam
+# ipparam pattern is [0-9a-fA-F]{8}-/%s
+length=${#PPP_IPPARAM}
+if [ ${length} -gt 0 ]; then
+	
+	nb=$( expr match "${PPP_IPPARAM}" '[0-9a-fA-F][0-9a-fA-F][0-9a-fA-F][0-9a-fA-F][0-9a-fA-F][0-9a-fA-F][0-9a-fA-F][0-9a-fA-F]-/.*' )
+	if [ ${nb} -eq ${length} ]; then
+	
+		#extract handle & queue name
+		handle=$( expr substr "${PPP_IPPARAM}" 1 8 )
+		qname=$( expr substr "${PPP_IPPARAM}" 10 ${length} )
+	
+		#compute message
+		#"PPPDEVT=%08x,%02d,%03d:[%s]"
+		#<handle>,<eventid>,<argsize>:[<arglist>]
+		arglist=$( echo -e "${PPP_IFACE}\n${PPP_TTY_NAME}\n${PPP_SPEED}\n${PPP_IPLOCAL}\n${PPP_IPREMOTE}\n${PPP_DNS1}\n${PPP_DNS2}" )
+		argsize=${#arglist}
+
+		##add padding to 3 digits for argsize
+		while [ ${#argsize} -lt 3 ]
+		do
+			argsize="0${argsize}"
+		done
+
+		message="PPPDEVT=${handle},${PPP_EVT_IFUP},${argsize}:${arglist}"
+		#send message in queue
+		mqueue -s "${message}" ${qname}
+	fi
+fi
+
+# Hook so that users can add their own stuff after that
+if [ -f /etc/ppp/ip-up.local ]; then
+	/etc/ppp/ip-up.local "${PPP_IFACE}" "${PPP_IPLOCAL}" "${PPP_IPREMOTE}"
+fi

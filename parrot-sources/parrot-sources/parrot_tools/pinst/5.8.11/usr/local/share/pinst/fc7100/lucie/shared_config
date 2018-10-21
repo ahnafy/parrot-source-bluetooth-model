@@ -1,0 +1,33 @@
+plateform=PTA_P7
+
+application=PA_FC7100
+
+# Applicative system kernel command line
+# This is the way to define any kernel
+# configuration items you may want. Refer to kernel documentation for syntax
+# requirements.
+# A good starting point is kernel-parameters.txt in the kernel
+# source Documentation directory.
+# Syntax :
+# system_kernel_cmdline="<cmdline>"
+system_kernel_cmdline=\
+"console=ttyPA0,115200 loglevel=4 "\
+"ubi.mtd=Psystem "\
+"ubi.mtd=Pfactory root=ubi0:system rootfstype=ubifs"
+
+# Target installer run-time kernel command line
+# This is the way to define any kernel
+# configuration items you may want. Refer to kernel documentation for syntax
+# requirements.
+# A good starting point is kernel-parameters.txt in the kernel
+# source Documentation directory.
+# Syntax :
+# installer_kernel_cmdline="<cmdline>"
+installer_kernel_cmdline="console=ttyPA0,115200 loglevel=8"
+
+# Target installer user interface binary
+# No user interface included within final PLF file if empty string specified
+# Syntax :
+# installer_ui="<pathname>"|""
+#installer_ui="rnb4_installer_ui"
+#installer_key="default_key.bin"

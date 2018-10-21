@@ -1,0 +1,151 @@
+#Bash completion for plftool -*- mode:sh -*-
+#
+
+#For adding p_targ value
+_plftool_p_targ()
+{
+    local p_targ_opts="PTA_NONE PTA_P5 PTA_SAM2410 PTA_SAM2412 PTA_P6 PTA_OMAP3 PTA_P7 "
+
+    COMPREPLY=( $(compgen -W "${p_targ_opts}" -- ${cur}) )
+}
+
+#For adding p_app value
+_plftool_p_app()
+{
+    local p_app_opts="PA_NONE PA_CK3010 PA_DRIVEBLUE PA_3200LS PA_CK4160 PA_CK4010 PA_MYNA PA_PAMOS PA_PSS PA_WV PA_BTT PA_CK5000 PA_MYNOS PA_DEVP5 PA_CK300P5 PA_CK5050 PA_ATHENA PA_BLUEBOX PA_RESERVED PA_CK5010 PA_KEA PA_PHAROS PA_CK4200 PA_CK4210 PA_CK5300 PA_MOGO PA_CK42XX PA_SARGAS PA_MOTOS PA_STEREOS PA_MK6100 PA_KORO PA_ANTARES PA_MYNOS2 PA_KANAWA PA_PUTMAN PA_CEOS PA_CK5050P PA_OPAL PA_VK50PE PA_SEBUKU PA_CK5050N PA_AVEA PA_NAOS PA_MSZ PA_MK9000 PA_MK9100 PA_MK9200 PA_UNIKA PA_PARELIA PA_MK9000 PA_MK9100 PA_MK9200 PA_MK9000 PA_P6DEV PA_RNB4 PA_MYKONOS PA_FC6XXX PA_FIDJI PA_FC6000S PA_FC6000N PA_P6IDEV PA_FC6050 PA_OKIA PA_TONGA PA_MYNOS4 PA_FC6100 PA_MYKONOS2 PA_SAFIR PA_MYNOS5 PA_RC7000 PA_P7DEV PA_RNB5 PA_IRONBOX PA_FC6SCL PA_FC6SCM PA_FC6SCH PA_MKI2 PA_FC6000N PA_FC6000S PA_EBOX5R2 PA_FC7100 PA_MYKONOS3 PA_BRITANNIA PA_DELOS PA_JUMPINGSUMO PA_UNKNOWN "
+
+    COMPREPLY=( $(compgen -W "${p_app_opts}" -- ${cur}) )
+}
+
+#For command: add-section add-section-before
+_plftool_section()
+{
+    local sect_opts="U_ALL E_TEXT E_DATA E_BSS U_DATA U_FILE U_DIR U_OBJECT U_BOOTLOADER U_DELETE U_UNIXFILE U_UI U_CONF U_PINST U_SIGNATURE "
+
+    if [ $# == 1 ] ; then
+        COMPREPLY=( $(compgen -W "${sect_opts}" -o nospace -S ${1} -- ${cur}) )
+    else
+        COMPREPLY=( $(compgen -W "${sect_opts}" -- ${cur}) )
+    fi
+}
+
+#For command: set-phdr-field get-phdr-field
+_plftool_phdr()
+{
+    local opts="p_magic p_plfversion p_phdrsize p_shdrsize p_type p_entry p_targ p_app p_hdw p_ver p_edit p_ext p_lang p_size"
+
+    if [ $# == 1 ] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -o nospace -S ${1} -- ${cur}) )
+    else
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+    fi
+}
+
+#For command: set-shdr-field get-shdr-field
+_plftool_shdr()
+{
+    local opts="s_type s_bsize s_crc s_addr s_dbsize"
+
+    if [ $# == 1 ] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -S ${1} -- ${cur}) )
+    else
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+    fi
+}
+
+_plftool()
+{
+    local cur prev prev_prev short_opts long_opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    prev_prev="${COMP_WORDS[COMP_CWORD-2]}"
+
+    short_opts="-a -b -c -e -E -f -F -g -G -h -j -l -L -n -p -q -r
+                -s -t -u -v -V -W -x -X -y -Y -z -Z"
+    long_opts="--add-section --add-section-before --count-sections
+                --add-elf-section --add-elf --set-shdr-field --set-phdr-field
+                --get-shdr-field --get-phdr-field --help --select-section
+                --display-section --display-all --new --set-path --get-path
+                --remove-section --sign --test-signature --unsign --verbose
+                --version --display-all-wide --extract-section --extract-unixfiles
+                --uncompress-section --uncompress-all --gzip-section --gzip-all"
+
+    case "${prev}" in
+        -a | -b | --add-section | --add-section-before)
+            _plftool_section =
+            return 0;
+            ;;
+
+        -e | --add-elf-section)
+            if [[ ${cur} == *: ]] ; then
+                _plftool_section
+            fi
+            ;;
+
+        -f | --set-shdr-field)
+            _plftool_shdr =
+            return 0;
+            ;;
+
+        -g | --get-shdr-field)
+            _plftool_shdr
+            return 0;
+            ;;
+
+        -F | --set-phdr-field)
+            _plftool_phdr =
+            return 0;
+            ;;
+
+        -G | --get-phdr-field)
+            _plftool_phdr
+            return 0;
+            ;;
+
+        -c | --count-sections | -j | --select-section)
+            _plftool_section
+            return 0;
+            ;;
+
+        p_targ)
+            if [ -n ${cur} ] ; then
+                cur="PTA_"
+                _plftool_p_targ
+                return 0;
+            fi
+            ;;
+
+        p_app)
+            if [ -n ${cur} ] ; then
+                cur="PA_"
+                _plftool_p_app
+                return 0;
+            fi
+            ;;
+
+        =)
+            if [[ ${prev_prev} == p_app ]] ; then
+                _plftool_p_app
+                return 0;
+            fi
+
+            if [[ ${prev_prev} == p_targ ]] ; then
+                _plftool_p_targ
+                return 0;
+            fi
+            ;;
+    esac
+
+    if [[ ${cur} == --* ]] ; then
+        COMPREPLY=( $(compgen -W "${long_opts}" -- ${cur}) )
+        return 0
+    fi
+
+    if [[ ${cur} == -* ]] ; then
+        COMPREPLY=( $(compgen -W "${short_opts}" -- ${cur}) )
+        return 0
+    fi
+}
+
+complete -o default -o nospace -F _plftool plftool

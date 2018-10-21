@@ -1,0 +1,4 @@
+#<name> <action>    [mount_point]
+#XXX create instead of truncate because of geo change
+system      create      /system
+data        create      /data

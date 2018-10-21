@@ -1,0 +1,11 @@
+# This file contains the rules needed to load firmwares. -*- mode:sh -*-
+
+# skip rules on already handled devices
+ENV{JUBA_STR_DEV_TYPE}=="firmware", GOTO="ujuba_firmware_start"
+ENV{JUBA_STR_DEV_TYPE}=="?*", GOTO="ujuba_firmware_end"
+
+LABEL="ujuba_firmware_start"
+
+ACTION=="add", SUBSYSTEM=="firmware", ENV{JUBA_STR_DEV_TYPE}="firmware", RUN="ujuba_firmware"
+
+LABEL="ujuba_firmware_end"

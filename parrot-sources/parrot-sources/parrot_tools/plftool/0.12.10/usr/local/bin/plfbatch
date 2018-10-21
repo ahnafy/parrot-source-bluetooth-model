@@ -1,0 +1,33 @@
+#!/bin/sh
+#
+# @file  PLF utilities: plfbatch
+#
+# Efficiently perform a lot of actions on the same PLF file, using batch
+# operations.
+#
+# @author ivan.djelic@parrot.com
+# @date   2008-11-18
+#
+# Copyright (C) 2008 Parrot S.A.
+#
+# Usage: plfbatch <action_string> <plf_file> < list_of_files
+# A character '&' in the action string will be replaced with the current input
+# file.
+#
+# Example:
+# find . -name '*.jpeg' | plfbatch '-a u_unixfile="&"' images.plf
+
+cmd=$( basename $0 )
+
+if [ $# != 2 ]; then
+    echo "$cmd: execute file batch actions on the same PLF file"
+    echo "Usage: $cmd <action_string> <plf_file> < list_of_files"
+	echo "Example: find . -name '*.jpg' | $cmd '-a u_unixfile=\"&\"' img.plf"
+    exit 1
+fi
+
+# limit length of command string
+len=65536
+tool=${PLFTOOL:-plftool}
+
+sed -e "s|.*|$1|1" | xargs -d '\n' -s $len echo | xargs -L1 $tool "$2"

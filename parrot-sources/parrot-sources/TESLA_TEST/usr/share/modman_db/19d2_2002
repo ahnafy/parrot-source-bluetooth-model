@@ -1,0 +1,15 @@
+########################################################
+# ZTE devices
+# post-switched config file, from 19d2:2000
+# example: ZTE Vodeafone K3765-7 (Italy)
+
+#DefaultVendor=  0x19d2
+#DefaultProduct= 0x2000
+#TargetVendor=   0x19d2
+#TargetProductList="0001,0002,0015,0016,0017,0031,0037,0052,0055,0063,0064,0066,0091,0108,0117,0128"
+
+ModMan_TimeOut2Ready=4
+ModMan_TimeOut2Unplugged=1
+ModMan_ttyCount=6 # counting from 1 (i.e. 11 = typically ttyUSB0 to ttyUSB10)
+ModMan_tty4chat=4 # counting from 1 (i.e. 10 = 10th tty = ttyUSB9 if starting from ttyUSB0)
+ModMan_tty4ppp=   # counting from 1 (i.e. 10 = 10th tty = ttyUSB9 if starting from ttyUSB0)

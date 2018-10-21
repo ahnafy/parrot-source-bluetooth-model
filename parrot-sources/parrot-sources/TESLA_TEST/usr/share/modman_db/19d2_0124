@@ -1,0 +1,14 @@
+########################################################
+# ZTE MF190 devices
+# post-switched config file, ex ZTE MF190 (P1850)
+
+#DefaultVendor=  0x19d2
+#DefaultProduct= 0x0149
+#TargetVendor=   0x19d2
+#TargetProductList=0x0124
+
+ModMan_TimeOut2Ready=
+ModMan_TimeOut2Unplugged=
+ModMan_ttyCount=7
+ModMan_tty4chat=5 # counting from 1 (i.e. 10 = 10th tty = ttyUSB9 if starting from ttyUSB0)
+ModMan_tty4ppp=5 # counting from 1 (i.e. 10 = 10th tty = ttyUSB9 if starting from ttyUSB0)

@@ -1,0 +1,11 @@
+########################################################
+# Sony Ericsson Satio (Idou)
+
+#DefaultVendor=0x0fce
+#DefaultProduct=0xd10e
+
+ModMan_TimeOut2Ready=1
+ModMan_TimeOut2Unplugged=1
+ModMan_ttyCount=4
+ModMan_tty4chat=1 # ttyUSB3 counting from 1 (i.e. 10 = 10th tty = ttyUSB9 if sta
+#ModMan_tty4ppp=1  # ttyUSB3 counting from 1 (i.e. 10 = 10th tty = ttyUSB9 if st

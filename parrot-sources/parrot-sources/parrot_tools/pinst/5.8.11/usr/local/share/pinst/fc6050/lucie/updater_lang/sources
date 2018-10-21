@@ -1,0 +1,17 @@
+# Installer update sources configuration file.
+# This is a priority-ordered list of devices where to look for PLF update
+# files.
+# Empty line and lines begining with a '#' are ignored.
+# device_id:    identifier of device to search into ; available IDs are :
+#                   - MMC: SDcard
+#                   - SD:  USB mass-storage
+#                   - MTD: Internal flash
+#
+# path:         a colon separated list of path name relative to the device root
+#               file system ; pathnames may be specified as extended fnmatch
+#               patterns.
+#
+#<device_id>    <path>
+SD              "/fc6050_update.plf"
+MTD4		"/fc6050_update.plf"
+MTD4		"/CKSOFT/ftp/update/fc6050_update.plf"

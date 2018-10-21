@@ -1,0 +1,15 @@
+########################################################
+# Huawei E1750 (others version) in advance on u.m.s., see: http://www.draisberghof.de/usb_modeswitch/bb/viewtopic.php?p=3919&sid=ded598a5617cae1cf1732433aa68c92d 
+# post-switched config file, ex Huawei E1750
+
+#DefaultVendor= 0x12d1
+#DefaultProduct=0x1446
+#TargetVendor=  0x12d1
+#TargetProductList="1001,1406,140b,140c,1412,141b,1436,14ac"
+
+ModMan_TimeOut2Ready=26
+ModMan_TimeOut2Unplugged=32
+ModMan_ttyCount=5
+ModMan_tty4chat=1 # counting from 1 (i.e. 10 = 10th tty = ttyUSB9 if starting from ttyUSB0)   
+ModMan_tty4ppp=1  # counting from 1 (i.e. 10 = 10th tty = ttyUSB9 if starting from ttyUSB0)
+

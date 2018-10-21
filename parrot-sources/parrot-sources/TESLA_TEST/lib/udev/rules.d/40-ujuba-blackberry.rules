@@ -1,0 +1,15 @@
+# Blackberry device support
+
+ENV{JUBA_STR_DEV_TYPE}=="blackberry", GOTO="ujuba_blackberry_rules_begin"
+ENV{JUBA_STR_DEV_TYPE}=="?*", GOTO="ujuba_blackberry_rules_end"
+
+# handle only usb_device and tty device types
+SUBSYSTEM!="tty", GOTO="ujuba_blackberry_rules_end"
+
+ACTION!="add|change", GOTO="ujuba_blackberry_rules_end"
+
+LABEL="ujuba_blackberry_rules_begin"
+
+DRIVERS=="blackberry", ATTRS{port_number}=="2", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="blackberry", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+LABEL="ujuba_blackberry_rules_end"

@@ -1,0 +1,1836 @@
+# This file contains the rules needed to handle modem -*- mode:sh -*-
+
+# skip rules on already handled devices
+ENV{JUBA_STR_DEV_TYPE}=="modem", GOTO="ujuba_modem_rules_begin"
+ENV{JUBA_STR_DEV_TYPE}=="?*", GOTO="ujuba_modem_rules_end"
+
+# handle only usb_device and tty device types
+ENV{DEVTYPE}!="usb_device", SUBSYSTEM!="tty", GOTO="ujuba_modem_rules_end"
+# only handle usb tty, matching ttyUSB*, ttyACM*, ttyHS*
+SUBSYSTEM=="tty", KERNEL=="tty[0-9]*", GOTO="ujuba_modem_rules_end"
+
+ACTION!="add|change", GOTO="ujuba_modem_rules_end"
+
+LABEL="ujuba_modem_rules_begin"
+
+##############
+### phones ###
+##############
+
+# Nokia C5
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="03a7", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia 311 Asha
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="053d", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia 5630 XpressMusic
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="011c", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia Nokia 5300
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="04b8", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia Nokia 5320 XpressMusic
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="00e9", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia Nokia 6710 Navigator
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="01cc", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia Nokia 5250
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="03c5", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia Nokia C5-03
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="03e6", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia Nokia C6-00
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="032b", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia Nokia 5230
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="02e3", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia Nokia 5700
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="04b2", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia Nokia 5800 XpressMusic
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="0154", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia Nokia 6700s
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="02ad", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia Nokia 6720 Classic
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="011d", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia Nokia 6730 Classic
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="023d", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia Nokia E52-1
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="01d0", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia Nokia N82
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="0071", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia Nokia E63
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="0178", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia Nokia N97
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="01f5", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia Nokia E72-1
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="0223", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia Nokia N97 mini
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="026c", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia Nokia N86 8MP
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="0216", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia Nokia E70-1
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="0418", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia Nokia N70
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="043a", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia Nokia N78
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="007b", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia Nokia N79
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="0187", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia Nokia X6-00
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="0275", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia E6-00
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="032f", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia E7 (Symbian 3 mobile phone)
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="0335", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia C7 (Symbian 3 mobile phone)
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="03cd", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia N8 (Symbian 3 mobile phone)
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="0302", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia 6210 Navigator (Symbian Serie 60 mobile phone)
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="0099", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia C6 (Symbian 3 mobile phone)
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="0312", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia 5530 XpressMusic (Symbian Serie 60 mobile phone)
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="022a", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia X3-02 Touch and Type
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="03df", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia X7-00
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="05ab", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia C2-01    
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="054b", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia C1-02     
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="0363", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia 6760 SlideNokia 6760 Slide
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="02d9", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia 7230
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="0261", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Nokia Nokia E5-00
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="0380", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# LG GD900 Crystal
+ATTRS{idVendor}=="1004", ATTRS{idProduct}=="6098", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Samsung I8510 Innov8
+ATTRS{idVendor}=="04e8", ATTRS{idProduct}=="6651", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Samsung SGH-G810
+ATTRS{idVendor}=="04e8", ATTRS{idProduct}=="6721", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Sony Ericsson G700
+ATTRS{idVendor}=="0fce", ATTRS{idProduct}=="d0cd", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Sony Ericsson G700c
+ATTRS{idVendor}=="0fce", ATTRS{idProduct}=="d0ce", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Sony Ericsson U10i Aino
+ATTRS{idVendor}=="0fce", ATTRS{idProduct}=="d129", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Sony Ericsson T707
+ATTRS{idVendor}=="0fce", ATTRS{idProduct}=="d11d", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Sony Ericsson C510
+ATTRS{idVendor}=="0fce", ATTRS{idProduct}=="d109", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Sony Ericsson T700
+ATTRS{idVendor}=="0fce", ATTRS{idProduct}=="d0fb", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Sony Ericsson W705
+ATTRS{idVendor}=="0fce", ATTRS{idProduct}=="d105", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Sony Ericsson J108i Cedar
+ATTRS{idVendor}=="0fce", ATTRS{idProduct}=="d14e", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Sony Ericsson Vivaz pro
+ATTRS{idVendor}=="0fce", ATTRS{idProduct}=="d13a", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Sony Ericsson Satio     
+ATTRS{idVendor}=="0fce", ATTRS{idProduct}=="d10e", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Sony Ericsson Vivaz Pro          
+ATTRS{idVendor}=="0fce", ATTRS{idProduct}=="d112", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Sony Ericsson C903
+ATTRS{idVendor}=="0fce", ATTRS{idProduct}=="d11a", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Sony Ericsson W760i
+ATTRS{idVendor}=="0fce", ATTRS{idProduct}=="d0c6", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Sony Ericsson VivazSony Ericsson Vivaz
+ATTRS{idVendor}=="0fce", ATTRS{idProduct}=="d133", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+#################################
+### stick from usb_modeswitch ###
+#################################
+
+# Strongrising CHZ 141
+ATTRS{idVendor}=="028a", ATTRS{idProduct}=="1006", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Nokia CS-10 pre-switch
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="060c", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Nokia CS-10 post-switch
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="060e", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Nokia CS-15 pre-switch
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="0610", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Nokia CS-15 post-switch
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="0612", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Nokia CS-17 pre-switch
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="0622", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Nokia CS-17 post-switch
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="0623", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Nokia CS-18 pre-switch
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="0627", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Nokia CS-18 post-switch
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="0612", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Nokia CS-18 post-switch
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="0629", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Nokia 21M-02 pre-switch
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="0637", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Nokia 21M-02 post-switch
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="0638", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Nokia CS-19 pre-switch
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="062c", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Nokia CS-19 post-switch
+ATTRS{idVendor}=="0421", ATTRS{idProduct}=="062d", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Philips (?) pre-switch
+ATTRS{idVendor}=="0471", ATTRS{idProduct}=="1210", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Vodafone MD950 (Wisue Technology) pre-switch
+ATTRS{idVendor}=="0471", ATTRS{idProduct}=="1210", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone MD950 (Wisue Technology) post-switch
+ATTRS{idVendor}=="1dbc", ATTRS{idProduct}=="0005", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Philips TalkTalk (NXP Semiconductors "Dragonfly") pre-switch
+ATTRS{idVendor}=="0471", ATTRS{idProduct}=="1237", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Philips TalkTalk (NXP Semiconductors "Dragonfly") post-switch
+ATTRS{idVendor}=="0471", ATTRS{idProduct}=="1206", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Philips TalkTalk (NXP Semiconductors "Dragonfly") post-switch
+ATTRS{idVendor}=="0471", ATTRS{idProduct}=="1234", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="phone", IMPORT{program}="ujuba_modem"
+
+# Kyocera W06K CDMA modem pre-switch
+ATTRS{idVendor}=="0482", ATTRS{idProduct}=="024d", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Ubee PXU1900 Wimax Card
+ATTRS{idVendor}=="0489", ATTRS{idProduct}=="e016", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# I-O Data WMX2-U Wimax pre-switch
+ATTRS{idVendor}=="04bb", ATTRS{idProduct}=="bccd", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# I-O Data WMX2-U Wimax post-switch
+ATTRS{idVendor}=="04bb", ATTRS{idProduct}=="0949", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Samsung GT-B3730 pre-switch
+ATTRS{idVendor}=="04e8", ATTRS{idProduct}=="689a", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Samsung GT-B3730 post-switch
+ATTRS{idVendor}=="04e8", ATTRS{idProduct}=="6889", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Samsung U209 pre-switch
+ATTRS{idVendor}=="04e8", ATTRS{idProduct}=="f000", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Samsung U209 post-switch
+ATTRS{idVendor}=="04e8", ATTRS{idProduct}=="6601", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# AVM Fritz!Wlan USB Stick N pre-switch
+ATTRS{idVendor}=="057c", ATTRS{idProduct}=="84ff", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# AVM Fritz!Wlan USB Stick N post-switch
+ATTRS{idVendor}=="057c", ATTRS{idProduct}=="8401", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Airis V430 pre-switch
+ATTRS{idVendor}=="05c6", ATTRS{idProduct}=="2001", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Airis V430 post-switch
+ATTRS{idVendor}=="05c6", ATTRS{idProduct}=="3100", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option GlobeTrotter GX0201 pre-switch
+ATTRS{idVendor}=="05c6", ATTRS{idProduct}=="1000", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option GlobeTrotter GX0201 post-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="6701", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# D-Link DWM-152 pre-switch
+ATTRS{idVendor}=="07d1", ATTRS{idProduct}=="a800", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# D-Link DWM-152 post-switch
+ATTRS{idVendor}=="07d1", ATTRS{idProduct}=="3e01", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Older Option devices post-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="6901", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Older Option devices post-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="6701", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Older Option devices post-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="6600", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# AnyDATA devices, Bless UC165 post-switch
+ATTRS{idVendor}=="16d5", ATTRS{idProduct}=="6502", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Celot CT-680 post-switch
+ATTRS{idVendor}=="211f", ATTRS{idProduct}=="6802", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Quirky Option devices post-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="6901", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Samsung SGH-Z810 post-switch
+ATTRS{idVendor}=="04e8", ATTRS{idProduct}=="6601", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Prolink P2000 CDMA post-switch
+ATTRS{idVendor}=="05c6", ATTRS{idProduct}=="6000", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vertex Wireless 100 Series post-switch
+ATTRS{idVendor}=="1fe7", ATTRS{idProduct}=="0100", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# HSDPA USB modem from dealextreme  pre-switch
+ATTRS{idVendor}=="05c6", ATTRS{idProduct}=="2000", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# HSDPA USB modem from dealextreme  post-switch
+ATTRS{idVendor}=="05c6", ATTRS{idProduct}=="0015", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# D-Link DWM-162-U5, Micromax MMX 300c pre-switch
+ATTRS{idVendor}=="05c6", ATTRS{idProduct}=="2001", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# D-Link DWM-162-U5, Micromax MMX 300c post-switch
+ATTRS{idVendor}=="1e0e", ATTRS{idProduct}=="ce16", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# D-Link DWM-162-U5, Micromax MMX 300c post-switch
+ATTRS{idVendor}=="1e0e", ATTRS{idProduct}=="cefe", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# AnyDATA APE-540H pre-switch
+ATTRS{idVendor}=="05c6", ATTRS{idProduct}=="6503", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# AnyDATA APE-540H post-switch
+ATTRS{idVendor}=="16d5", ATTRS{idProduct}=="6502", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Siptune LM-75 ("LinuxModem") pre-switch
+ATTRS{idVendor}=="05c6", ATTRS{idProduct}=="f000", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Siptune LM-75 ("LinuxModem") post-switch
+ATTRS{idVendor}=="05c6", ATTRS{idProduct}=="9000", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Qtronix EVDO 3G Modem (for TianYi) pre-switch
+ATTRS{idVendor}=="05c7", ATTRS{idProduct}=="1000", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Qtronix EVDO 3G Modem (for TianYi) post-switch
+ATTRS{idVendor}=="05c7", ATTRS{idProduct}=="6000", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# InfoCert Business Key (SmartCard/Reader emulation) pre-switch
+ATTRS{idVendor}=="072f", ATTRS{idProduct}=="100d", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# InfoCert Business Key (SmartCard/Reader emulation) post-switch
+ATTRS{idVendor}=="072f", ATTRS{idProduct}=="90cc", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# D-Link DWM-156 HSUPA 3.75G USB Modem  pre-switch
+ATTRS{idVendor}=="07d1", ATTRS{idProduct}=="a800", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# D-Link DWM-156 HSUPA 3.75G USB Modem  post-switch
+ATTRS{idVendor}=="07d1", ATTRS{idProduct}=="3e02", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# D-Link DWM-156 HSUPA 3.75G USB Modem pre-switch
+ATTRS{idVendor}=="07d1", ATTRS{idProduct}=="a804", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# D-Link DWM-156 HSUPA 3.75G USB Modem post-switch
+ATTRS{idVendor}=="07d1", ATTRS{idProduct}=="7e11", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Toshiba G450 pre-switch
+ATTRS{idVendor}=="0930", ATTRS{idProduct}=="0d46", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Toshiba G450 post-switch
+ATTRS{idVendor}=="0930", ATTRS{idProduct}=="0d45", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Zydas ZD1211RW WLAN USB, Sphairon HomeLink 1202 (Variant 1) pre-switch
+ATTRS{idVendor}=="0ace", ATTRS{idProduct}=="2011", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Zydas ZD1211RW WLAN USB, Sphairon HomeLink 1202 (Variant 2) pre-switch
+ATTRS{idVendor}=="0ace", ATTRS{idProduct}=="20ff", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="6711", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="6731", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="6751", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="6771", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="6791", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="6811", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="6911", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="6951", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="6971", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="7011", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="7031", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="7051", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="7071", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="7111", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="7211", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="7251", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="7271", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="7301", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="7311", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="7361", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="7381", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="7401", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="7501", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="7601", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="7701", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="7706", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="7801", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="7901", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="7a01", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option iCon 461 pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="7a05", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="8200", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="8201", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="8300", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="8302", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="8304", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="8400", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="8600", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="8800", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="8900", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="9000", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="c031", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="c100", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option GlobeTrotter GI1515 pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="d001", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option GlobeTrotter GI1515 post-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="d157", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="d013", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="d031", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="d033", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="d035", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="d055", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="d057", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="d058", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="d155", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="d157", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="d255", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="d257", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option HSO device pre-switch
+ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="d357", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Olivetti Olicard 100 and others pre-switch
+ATTRS{idVendor}=="0b3c", ATTRS{idProduct}=="c700", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Olivetti Olicard 100 and others post-switch
+ATTRS{idVendor}=="0b3c", ATTRS{idProduct}=="c000", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Olivetti Olicard 100 and others post-switch
+ATTRS{idVendor}=="0b3c", ATTRS{idProduct}=="c001", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Olivetti Olicard 100 and others post-switch
+ATTRS{idVendor}=="0b3c", ATTRS{idProduct}=="c002", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Olivetti Olicard 145, 155 pre-switch
+ATTRS{idVendor}=="0b3c", ATTRS{idProduct}=="f000", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Olivetti Olicard 145, 155 post-switch
+ATTRS{idVendor}=="0b3c", ATTRS{idProduct}=="c003", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Olivetti Olicard 145, 155 post-switch
+ATTRS{idVendor}=="0b3c", ATTRS{idProduct}=="c004", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Atheros Wireless / Netgear WNDA3200 pre-switch
+ATTRS{idVendor}=="0cf3", ATTRS{idProduct}=="20ff", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Atheros Wireless / Netgear WNDA3200 post-switch
+ATTRS{idVendor}=="0cf3", ATTRS{idProduct}=="7010", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Kobil mIdentity 3G (1) pre-switch
+ATTRS{idVendor}=="0d46", ATTRS{idProduct}=="45a1", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Kobil mIdentity 3G (1) post-switch
+ATTRS{idVendor}=="0d46", ATTRS{idProduct}=="45a9", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Kobil mIdentity 3G (2) pre-switch
+ATTRS{idVendor}=="0d46", ATTRS{idProduct}=="45a5", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Kobil mIdentity 3G (2) post-switch
+ATTRS{idVendor}=="0d46", ATTRS{idProduct}=="45ad", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Mobile Action ("Smart Cable") pre-switch
+ATTRS{idVendor}=="0df7", ATTRS{idProduct}=="0800", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# MediaTek Wimax USB Card pre-switch
+ATTRS{idVendor}=="0e8d", ATTRS{idProduct}=="7109", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# MediaTek Wimax USB Card post-switch
+ATTRS{idVendor}=="0e8d", ATTRS{idProduct}=="7118", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sony Ericsson MD300 pre-switch
+ATTRS{idVendor}=="0fce", ATTRS{idProduct}=="d0cf", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sony Ericsson MD400 pre-switch
+ATTRS{idVendor}=="0fce", ATTRS{idProduct}=="d0e1", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sony Ericsson MD400G pre-switch
+ATTRS{idVendor}=="0fce", ATTRS{idProduct}=="d103", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# GW D301 (Advinne AMC) pre-switch
+ATTRS{idVendor}=="0fd1", ATTRS{idProduct}=="1000", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# LG LDU-1900D EV-DO (Rev. A) pre-switch
+ATTRS{idVendor}=="1004", ATTRS{idProduct}=="1000", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# LG HDM-2100 (EVDO Rev.A USB modem) pre-switch
+ATTRS{idVendor}=="1004", ATTRS{idProduct}=="607f", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# LG HDM-2100 (EVDO Rev.A USB modem) post-switch
+ATTRS{idVendor}=="1004", ATTRS{idProduct}=="6000", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# LG HDM-2100 (EVDO Rev.A USB modem) post-switch
+ATTRS{idVendor}=="1004", ATTRS{idProduct}=="6114", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# LG L-05A pre-switch
+ATTRS{idVendor}=="1004", ATTRS{idProduct}=="613a", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# LG L-05A post-switch
+ATTRS{idVendor}=="1004", ATTRS{idProduct}=="6124", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# LG LUU-2100TI (aka AT&T USBConnect Turbo) pre-switch
+ATTRS{idVendor}=="1004", ATTRS{idProduct}=="613f", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# LG LUU-2100TI (aka AT&T USBConnect Turbo) post-switch
+ATTRS{idVendor}=="1004", ATTRS{idProduct}=="6141", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# LG L-07A pre-switch
+ATTRS{idVendor}=="1004", ATTRS{idProduct}=="614e", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# LG L-07A post-switch
+ATTRS{idVendor}=="1004", ATTRS{idProduct}=="6135", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# LG LUU-2110TI pre-switch
+ATTRS{idVendor}=="1004", ATTRS{idProduct}=="6156", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# LG LUU-2110TI post-switch
+ATTRS{idVendor}=="1004", ATTRS{idProduct}=="6157", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# LG AD600 pre-switch
+ATTRS{idVendor}=="1004", ATTRS{idProduct}=="6190", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# LG AD600 post-switch
+ATTRS{idVendor}=="1004", ATTRS{idProduct}=="61a7", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# LG VL600 pre-switch
+ATTRS{idVendor}=="1004", ATTRS{idProduct}=="61aa", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# LG VL600 post-switch
+ATTRS{idVendor}=="1004", ATTRS{idProduct}=="61a7", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# LG L-02C LTE pre-switch
+ATTRS{idVendor}=="1004", ATTRS{idProduct}=="61dd", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# LG L-02C LTE post-switch
+ATTRS{idVendor}=="1004", ATTRS{idProduct}=="618f", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# LG SD711 pre-switch
+ATTRS{idVendor}=="1004", ATTRS{idProduct}=="61e7", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# LG SD711 post-switch
+ATTRS{idVendor}=="1004", ATTRS{idProduct}=="61e6", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# LG L-08C (NTT docomo) pre-switch
+ATTRS{idVendor}=="1004", ATTRS{idProduct}=="61eb", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# LG L-08C (NTT docomo) post-switch
+ATTRS{idVendor}=="1004", ATTRS{idProduct}=="61ea", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei R205 (MiFi) pre-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="155a", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei R205 (MiFi) post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="14cd", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei K5005 (4G) pre-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="14c3", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei K5005 (4G) post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="14c8", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei E510 Partner TV (same product id before and after switch)
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1411", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei E630 pre-switch
+ATTRS{idVendor}=="1033", ATTRS{idProduct}=="0035", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei E630 post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1003", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# UTStarcom UM175 (distributor "Alltel") pre-switch
+ATTRS{idVendor}=="106c", ATTRS{idProduct}=="3b03", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# UTStarcom UM175 (distributor "Alltel") post-switch
+ATTRS{idVendor}=="106c", ATTRS{idProduct}=="3715", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Pantech / UTStarcom UMW190 (Verizon) pre-switch
+ATTRS{idVendor}=="106c", ATTRS{idProduct}=="3b05", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Pantech / UTStarcom UMW190 (Verizon) post-switch
+ATTRS{idVendor}=="106c", ATTRS{idProduct}=="3716", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# UTStarcom UM185E (distributor "Alltel") pre-switch
+ATTRS{idVendor}=="106c", ATTRS{idProduct}=="3b06", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# UTStarcom UM185E (distributor "Alltel") post-switch
+ATTRS{idVendor}=="106c", ATTRS{idProduct}=="3717", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sagem F@ST 9520-35-GLR pre-switch
+ATTRS{idVendor}=="1076", ATTRS{idProduct}=="7f40", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sagem F@ST 9520-35-GLR post-switch
+ATTRS{idVendor}=="1076", ATTRS{idProduct}=="7f00", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) pre-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="0fff", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="0017", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="0018", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="0019", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="0020", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="0021", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="0022", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="0024", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="0026", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="0027", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="0028", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="0029", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="0112", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="0120", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="0218", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="0220", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="0224", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="0301", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="6802", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="6803", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="6804", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="6805", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="6808", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="6809", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="6812", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="6813", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="6815", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="6816", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="6820", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="6821", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="6822", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="6832", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="6833", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="6834", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="6835", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="6838", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="6839", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="683a", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="683b", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="683c", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="683d", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="683e", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="6850", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="6851", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="6852", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="6853", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="6855", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="6856", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="6859", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switch
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="685a", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Digicom 8E4455 (and all Pirelli devices - EXPERIMENTAL) pre-switch
+ATTRS{idVendor}=="1266", ATTRS{idProduct}=="1000", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Digicom 8E4455 (and all Pirelli devices - EXPERIMENTAL) post-switch
+ATTRS{idVendor}=="1266", ATTRS{idProduct}=="1002", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Digicom 8E4455 (and all Pirelli devices - EXPERIMENTAL) post-switch
+ATTRS{idVendor}=="1266", ATTRS{idProduct}=="1003", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Digicom 8E4455 (and all Pirelli devices - EXPERIMENTAL) post-switch
+ATTRS{idVendor}=="1266", ATTRS{idProduct}=="1004", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Digicom 8E4455 (and all Pirelli devices - EXPERIMENTAL) post-switch
+ATTRS{idVendor}=="1266", ATTRS{idProduct}=="1005", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Digicom 8E4455 (and all Pirelli devices - EXPERIMENTAL) post-switch
+ATTRS{idVendor}=="1266", ATTRS{idProduct}=="1006", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Digicom 8E4455 (and all Pirelli devices - EXPERIMENTAL) post-switch
+ATTRS{idVendor}=="1266", ATTRS{idProduct}=="1007", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Digicom 8E4455 (and all Pirelli devices - EXPERIMENTAL) post-switch
+ATTRS{idVendor}=="1266", ATTRS{idProduct}=="1008", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Digicom 8E4455 (and all Pirelli devices - EXPERIMENTAL) post-switch
+ATTRS{idVendor}=="1266", ATTRS{idProduct}=="1009", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Digicom 8E4455 (and all Pirelli devices - EXPERIMENTAL) post-switch
+ATTRS{idVendor}=="1266", ATTRS{idProduct}=="100a", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Digicom 8E4455 (and all Pirelli devices - EXPERIMENTAL) post-switch
+ATTRS{idVendor}=="1266", ATTRS{idProduct}=="100b", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Digicom 8E4455 (and all Pirelli devices - EXPERIMENTAL) post-switch
+ATTRS{idVendor}=="1266", ATTRS{idProduct}=="100c", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Digicom 8E4455 (and all Pirelli devices - EXPERIMENTAL) post-switch
+ATTRS{idVendor}=="1266", ATTRS{idProduct}=="100d", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Digicom 8E4455 (and all Pirelli devices - EXPERIMENTAL) post-switch
+ATTRS{idVendor}=="1266", ATTRS{idProduct}=="100e", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Digicom 8E4455 (and all Pirelli devices - EXPERIMENTAL) post-switch
+ATTRS{idVendor}=="1266", ATTRS{idProduct}=="100f", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Digicom 8E4455 (and all Pirelli devices - EXPERIMENTAL) post-switch
+ATTRS{idVendor}=="1266", ATTRS{idProduct}=="1011", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Digicom 8E4455 (and all Pirelli devices - EXPERIMENTAL) post-switch
+ATTRS{idVendor}=="1266", ATTRS{idProduct}=="1012", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei E169 pre-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1001", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei E220, E230, E270, E870 pre-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1003", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei V725 Phone (aka Vodafone 725) pre-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1009", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei U7510 / U7517 pre-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="101e", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei U8220, T-Mobile Pulse (Android smartphone) pre-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1030", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei U8220, T-Mobile Pulse (Android smartphone) post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1034", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei U8110 / Joy, Vodafone 845 (Android smartphone) pre-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1031", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei U8110 / Joy, Vodafone 845 (Android smartphone) post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1035", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei E180 pre-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1414", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei, newer modems pre-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1446", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei, newer modems post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1001", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei, newer modems post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1406", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei, newer modems post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="140b", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei, newer modems post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="140c", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei, newer modems post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1412", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei, newer modems post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="141b", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei, newer modems post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1432", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei, newer modems post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1433", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei, newer modems post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1436", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei, newer modems post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="14ac", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei, newer modems post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1506", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei E352 pre-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1449", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei E352 post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1444", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone (Huawei) K3806 pre-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="14ad", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone (Huawei) K3806 post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="14ae", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei E173 (Viettel 3G) pre-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="14b5", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei E173 (Viettel 3G) post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="14a8", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone (Huawei) K4511 pre-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="14b7", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone (Huawei) K4511 post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="14cc", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone (Huawei) K3772 pre-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1526", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone (Huawei) K3772 post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="14cf", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone (Huawei) K4605 pre-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="14c1", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone (Huawei) K4605 post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="14c6", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone/Huawei K3771 pre-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="14c4", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone/Huawei K3771 post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="14ca", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone (Huawei) K4510 pre-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="14c5", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone (Huawei) K4510 post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="14cb", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone/Huawei K3770 pre-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="14c9", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone/Huawei K3770 post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="14d1", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone/Huawei K3771 pre-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="14ca", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone/Huawei K3771 post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="14c4", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone/Huawei K3770 pre-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="14d1", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone/Huawei K3770 post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="14c9", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# T-Mobile NL (Huawei E352) pre-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="14fe", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# T-Mobile NL (Huawei E352) post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1506", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei EC156 pre-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1505", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei E398u-15 post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="150a", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei EC156 post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="140b", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei EC156 post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1506", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei E192 post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1511", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei E392u-12 pre-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="151a", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei E392u-12 post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="151b", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+
+# Huawei EC156 post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="150f", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei K3765 pre-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1520", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei K3765 post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1465", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei K4505 pre-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1521", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei K4505 post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1464", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei R201 pre-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1523", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei R201 post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1491", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei E1553 pre-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1553", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei E1553 post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1001", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei E173 pre-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1557", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei E173 post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="14a5", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei E173s pre-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1c0b", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei E173s post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1c05", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei E173s post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1c07", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei E173s post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1c08", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei E173-s1 post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1c10", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei ET302 pre-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1d50", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei ET8282, Huawei ET127  pre-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1da1", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei ET8282, Huawei ET127  post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1d09", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei E353 (3.se) post-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="14db", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei BM358 WiMAX pre-switch
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="380b", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Cisco AM10 "Valet Connector" pre-switch
+ATTRS{idVendor}=="1307", ATTRS{idProduct}=="1169", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Cisco AM10 "Valet Connector" post-switch
+ATTRS{idVendor}=="13b1", ATTRS{idProduct}=="0031", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Novatel Wireless devices pre-switch
+ATTRS{idVendor}=="1410", ATTRS{idProduct}=="5010", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Novatel Wireless devices post-switch
+ATTRS{idVendor}=="1410", ATTRS{idProduct}=="4100", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Novatel Wireless devices post-switch
+ATTRS{idVendor}=="1410", ATTRS{idProduct}=="4400", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Novatel Wireless devices post-switch
+ATTRS{idVendor}=="1410", ATTRS{idProduct}=="7030", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Novatel MC990D pre-switch
+ATTRS{idVendor}=="1410", ATTRS{idProduct}=="5020", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Novatel U760 pre-switch
+ATTRS{idVendor}=="1410", ATTRS{idProduct}=="5030", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Novatel U760 post-switch
+ATTRS{idVendor}=="1410", ATTRS{idProduct}=="6000", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Novatel MC760 3G pre-switch
+ATTRS{idVendor}=="1410", ATTRS{idProduct}=="5031", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Novatel MC760 3G post-switch
+ATTRS{idVendor}=="1410", ATTRS{idProduct}=="6002", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Novatel Generic MiFi 2352 / Vodafone MiFi 2352 pre-switch
+ATTRS{idVendor}=="1410", ATTRS{idProduct}=="5041", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Novatel Generic MiFi 2352 / Vodafone MiFi 2352 post-switch
+ATTRS{idVendor}=="1410", ATTRS{idProduct}=="7001", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Novatel Generic MiFi 2352 / Vodafone MiFi 2352 post-switch
+ATTRS{idVendor}=="1410", ATTRS{idProduct}=="7003", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Novatel Wireless MC545 HSPA pre-switch
+ATTRS{idVendor}=="1410", ATTRS{idProduct}=="5059", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Novatel Wireless MC545 HSPA post-switch
+ATTRS{idVendor}=="1410", ATTRS{idProduct}=="7042", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Novatel Generic MiFi 2372 / Vodafone MiFi 2372 pre-switch
+ATTRS{idVendor}=="1410", ATTRS{idProduct}=="7001", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sequans SQN1210/SQN1220 (generic chipsets) pre-switch
+ATTRS{idVendor}=="148e", ATTRS{idProduct}=="a000", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Motorola 802.11 bg WLAN (TER/GUSB3-E) pre-switch
+ATTRS{idVendor}=="148f", ATTRS{idProduct}=="2578", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Motorola 802.11 bg WLAN (TER/GUSB3-E) post-switch
+ATTRS{idVendor}=="148f", ATTRS{idProduct}=="9021", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# C-motech CHU-628S pre-switch
+ATTRS{idVendor}=="16d8", ATTRS{idProduct}=="6281", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# C-motech D-50 (aka "CDU-680") pre-switch
+ATTRS{idVendor}=="16d8", ATTRS{idProduct}=="6803", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# C-motech CDU-685a pre-switch
+ATTRS{idVendor}=="16d8", ATTRS{idProduct}=="6804", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# C-motech CHU-629S pre-switch
+ATTRS{idVendor}=="16d8", ATTRS{idProduct}=="700a", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# C-motech CHU-629S (Variant) pre-switch
+ATTRS{idVendor}=="16d8", ATTRS{idProduct}=="700b", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# C-motech CGU-628 (aka "Franklin Wireless CGU-628A" aka "4G Systems XS Stick W12") pre-switch
+ATTRS{idVendor}=="16d8", ATTRS{idProduct}=="f000", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# C-motech CGU-628 (aka "Franklin Wireless CGU-628A" aka "4G Systems XS Stick W12") post-switch
+ATTRS{idVendor}=="16d8", ATTRS{idProduct}=="6006", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# JOA Telecom LM-700r pre-switch
+ATTRS{idVendor}=="198a", ATTRS{idProduct}=="0003", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# JOA Telecom LM-700r post-switch
+ATTRS{idVendor}=="198a", ATTRS{idProduct}=="0002", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Beceem BCSM250 pre-switch
+ATTRS{idVendor}=="198f", ATTRS{idProduct}=="bccd", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Beceem BCSM250 post-switch
+ATTRS{idVendor}=="198f", ATTRS{idProduct}=="0220", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF821D pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0325", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF821D post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0326", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MU351 pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0003", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone/ZTE K3806-Z pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0013", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone/ZTE K3806-Z post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0015", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE AC581 pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0026", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE AC581 post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0094", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone (ZTE) K2525 pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0040", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone (ZTE) K2525 post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0022", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF110 (Variant) pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0053", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF110 (Variant) post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0031", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF645 pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0061", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF645 post-switch and MF60 pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="2000", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF60 post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="1402", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF110 (Variant) pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0083", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF110 (Variant) post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0124", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone (ZTE) K4505-Z pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0101", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone (ZTE) K4505-Z post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0104", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Onda MT8205 pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0266", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Onda MT8205 post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0265", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF112 pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0103", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF112 post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0031", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF637 (Variant for Orange France) pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0110", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF637 (Variant for Orange France) post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0121", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF651 pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0115", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF651 post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0116", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+#ZTE-T A356 pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0120", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+#ZTE-T A356 post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0079", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF652 (Variant) pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0146", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF652 (Variant) post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0143", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF190 (Variant) pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0149", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF190 (Variant) post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0124", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF820 4G LTE pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0166", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF820 4G LTE post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0167", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE A371B pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0169", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE A371B post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0170", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone (ZTE) K3805-Z pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="1001", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone (ZTE) K3805-Z post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="1003", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone (ZTE) K3570-Z pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="1007", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone (ZTE) K3570-Z post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="1008", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone (ZTE) K3571-Z pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="1009", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone (ZTE) K3571-Z post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="1010", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone (ZTE) K3806-Z pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="1013", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone (ZTE) K3806-Z post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="1015", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone (ZTE) K4510-Z pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="1171", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone (ZTE) K4510-Z post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="1173", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone (ZTE) K3770-Z pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="1175", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone (ZTE) K3770-Z post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="1177", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone (ZTE) K3772-Z pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="1179", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vodafone (ZTE) K3772-Z post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="1181", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF691 (T-Mobile Rocket 2.0) pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="1201", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF691 (T-Mobile Rocket 2.0) post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="1203", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF192 pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="1216", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF192 post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="1218", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF190 pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="1224", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF190 post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0082", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF192 (Variant) pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="1517", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF192 (Variant) post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="1519", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF652 pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="1520", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF652 post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0142", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF591 TMobile pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="1523", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF591 TMobile post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="1525", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE devices pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="2000", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE devices post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0001", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE devices post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0002", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE devices post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0015", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE devices post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0016", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE devices post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0017", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE devices post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0031", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE devices post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0037", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE devices post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0052", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE devices post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0055", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE devices post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0063", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE devices post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0064", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE devices post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0066", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE devices post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0091", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE devices post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0108", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE devices post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0117", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE devices post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0128", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE devices post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0157", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE devices post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="2002", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE devices post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="2003", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE AX226 WiMax pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="bccd", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE AX226 WiMax post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0172", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE AC682 (a.k.a. SmartFren Connex) pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="ffde", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE AC682 (a.k.a. SmartFren Connex) post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="ffdd", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE "ffe" devices 1 (e.g. Cricket A605) pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="ffe6", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE "ffe" devices 1 (e.g. Cricket A605) post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="ffe5", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE "fff" devices 1 pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="fff5", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE "fff" devices 1 post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="fff1", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE "fff" devices 1 post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="fffe", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE "fff" devices 1 post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="ffff", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE "fff" devices 2 pre-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="fff6", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE "fff" devices 2 post-switch
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="fff1", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# BandRich BandLuxe C100, C120, C170, C270, C3xx pre-switch
+ATTRS{idVendor}=="1a8d", ATTRS{idProduct}=="1000", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# BandRich BandLuxe C100, C120, C170, C270, C3xx post-switch
+ATTRS{idVendor}=="1a8d", ATTRS{idProduct}=="1002", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# BandRich BandLuxe C100, C120, C170, C270, C3xx post-switch
+ATTRS{idVendor}=="1a8d", ATTRS{idProduct}=="1009", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# BandRich BandLuxe C100, C120, C170, C270, C3xx post-switch
+ATTRS{idVendor}=="1a8d", ATTRS{idProduct}=="2006", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# BandRich BandLuxe C339 pre-switch
+ATTRS{idVendor}=="1a8d", ATTRS{idProduct}=="2000", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# BandRich BandLuxe C339 post-switch
+ATTRS{idVendor}=="1a8d", ATTRS{idProduct}=="2006", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Hummer DTM5731  pre-switch
+ATTRS{idVendor}=="1ab7", ATTRS{idProduct}=="5700", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Hummer DTM5731  post-switch
+ATTRS{idVendor}=="1ab7", ATTRS{idProduct}=="5731", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# EpiValley SEC-7089 (featured by Alegro and Starcomms / iZAP) pre-switch
+ATTRS{idVendor}=="1b7d", ATTRS{idProduct}=="0700", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# EpiValley SEC-7089 (featured by Alegro and Starcomms / iZAP) post-switch
+ATTRS{idVendor}=="1b7d", ATTRS{idProduct}=="0001", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ETCOM E300 pre-switch
+ATTRS{idVendor}=="1bbb", ATTRS{idProduct}=="000f", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ETCOM E300 post-switch
+ATTRS{idVendor}=="1bbb", ATTRS{idProduct}=="000f", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Alcatel X200/X200L/X060S, Archos G9 3G Key pre-switch
+ATTRS{idVendor}=="1bbb", ATTRS{idProduct}=="f000", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Alcatel X200/X200L/X060S post-switch
+ATTRS{idVendor}=="1bbb", ATTRS{idProduct}=="0000", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Alcatel X200/X200L/X060S post-switch
+ATTRS{idVendor}=="1bbb", ATTRS{idProduct}=="0017", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Archos G9 3G Key post-switching (change idProduct)
+ATTRS{idVendor}=="1bbb", ATTRS{idProduct}=="00b7", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Alcatel OT X220L pre-switch
+ATTRS{idVendor}=="1bbb", ATTRS{idProduct}=="f052", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Alcatel OT X220L post-switch
+ATTRS{idVendor}=="1bbb", ATTRS{idProduct}=="0052", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Alcatel One Touch X020 pre-switch
+ATTRS{idVendor}=="1c9e", ATTRS{idProduct}=="1001", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Alcatel One Touch X020 post-switch
+ATTRS{idVendor}=="1c9e", ATTRS{idProduct}=="6061", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Vibe 3G Modem  pre-switch
+ATTRS{idVendor}=="1c9e", ATTRS{idProduct}=="6061", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# MyWave SW006 Sport Phone/Modem Combination pre-switch
+ATTRS{idVendor}=="1c9e", ATTRS{idProduct}=="9200", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# MyWave SW006 Sport Phone/Modem Combination post-switch
+ATTRS{idVendor}=="1c9e", ATTRS{idProduct}=="9202", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Longcheer SU9800 pre-switch
+ATTRS{idVendor}=="1c9e", ATTRS{idProduct}=="9800", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# BSNL Capitel pre-switch
+ATTRS{idVendor}=="1c9e", ATTRS{idProduct}=="9e00", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# MobiData MBD-200HU and others pre-switch
+ATTRS{idVendor}=="1c9e", ATTRS{idProduct}=="f000", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# MobiData MBD-200HU and others post-switch
+ATTRS{idVendor}=="1c9e", ATTRS{idProduct}=="9000", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# MobiData MBD-200HU and others post-switch
+ATTRS{idVendor}=="1c9e", ATTRS{idProduct}=="9603", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# MobiData MBD-200HU and others post-switch
+ATTRS{idVendor}=="1c9e", ATTRS{idProduct}=="9605", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# MobiData MBD-200HU and others post-switch
+ATTRS{idVendor}=="1c9e", ATTRS{idProduct}=="9607", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Qisda H21 Flying Beetle pre-switch
+ATTRS{idVendor}=="1da5", ATTRS{idProduct}=="f000", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Qisda H21 Flying Beetle post-switch
+ATTRS{idVendor}=="1da5", ATTRS{idProduct}=="4512", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Solomon S3Gm-660 pre-switch
+ATTRS{idVendor}=="1dd6", ATTRS{idProduct}=="1000", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Solomon S3Gm-660 post-switch
+ATTRS{idVendor}=="1dd6", ATTRS{idProduct}=="1002", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Philips PicoPix 1020 Projector pre-switch
+ATTRS{idVendor}=="1de1", ATTRS{idProduct}=="1101", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Philips PicoPix 1020 Projector post-switch
+ATTRS{idVendor}=="21e7", ATTRS{idProduct}=="000e", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option iCON 210, PROLiNK PHS100, Hyundai MB-810, A-Link 3GU pre-switch
+ATTRS{idVendor}=="1e0e", ATTRS{idProduct}=="f000", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option iCON 210, PROLiNK PHS100, Hyundai MB-810, A-Link 3GU post-switch
+ATTRS{idVendor}=="1e0e", ATTRS{idProduct}=="9200", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Option iCON 210, PROLiNK PHS100, Hyundai MB-810, A-Link 3GU post-switch
+ATTRS{idVendor}=="1e0e", ATTRS{idProduct}=="9000", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# 3GO 3GO11 HSUPA pre-switch
+ATTRS{idVendor}=="1e89", ATTRS{idProduct}=="f000", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# 3GO 3GO11 HSUPA post-switch
+ATTRS{idVendor}=="1e89", ATTRS{idProduct}=="1a20", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# AirPlus MCD-800 pre-switch
+ATTRS{idVendor}=="1edf", ATTRS{idProduct}=="6003", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Onda MW833UP pre-switch
+ATTRS{idVendor}=="1ee8", ATTRS{idProduct}=="0009", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Onda MW833UP post-switch
+ATTRS{idVendor}=="1ee8", ATTRS{idProduct}=="000b", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Onda MW833UP pre-switch
+ATTRS{idVendor}=="1ee8", ATTRS{idProduct}=="0013", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Onda MW833UP post-switch
+ATTRS{idVendor}=="1ee8", ATTRS{idProduct}=="0012", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Onda MW833UP post-switch
+ATTRS{idVendor}=="1ee8", ATTRS{idProduct}=="0014", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Onda MW836UP-K pre-switch
+ATTRS{idVendor}=="1ee8", ATTRS{idProduct}=="0040", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Onda MW836UP-K post-switch
+ATTRS{idVendor}=="1ee8", ATTRS{idProduct}=="003e", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Onda MW836UP-K post-switch
+ATTRS{idVendor}=="1ee8", ATTRS{idProduct}=="003f", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Onda MW875UP
+ATTRS{idVendor}=="1ee8", ATTRS{idProduct}=="0054", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Onda TM201 pre-switch
+ATTRS{idVendor}=="1ee8", ATTRS{idProduct}=="0063", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Onda TM201 post-switch
+ATTRS{idVendor}=="1ee8", ATTRS{idProduct}=="0064", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Onda MW301 pre-switch
+ATTRS{idVendor}=="1ee8", ATTRS{idProduct}=="0068", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Onda MW301 post-switch
+ATTRS{idVendor}=="1ee8", ATTRS{idProduct}=="0069", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Onda MW875UP post-switching (change idProduct)
+ATTRS{idVendor}=="1ee8", ATTRS{idProduct}=="0053", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Cricket A600 pre-switch
+ATTRS{idVendor}=="1f28", ATTRS{idProduct}=="0021", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Cricket A600 post-switch
+ATTRS{idVendor}=="1f28", ATTRS{idProduct}=="0020", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Franklin Wireless U210 (Variant) pre-switch
+ATTRS{idVendor}=="1fac", ATTRS{idProduct}=="0032", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Franklin Wireless U210 pre-switch
+ATTRS{idVendor}=="1fac", ATTRS{idProduct}=="0130", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Franklin Wireless U210 post-switch
+ATTRS{idVendor}=="1fac", ATTRS{idProduct}=="0131", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Franklin Wireless U600 pre-switch
+ATTRS{idVendor}=="1fac", ATTRS{idProduct}=="0151", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Haier CE682 (EVDO) pre-switch
+ATTRS{idVendor}=="201e", ATTRS{idProduct}=="1023", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Haier CE682 (EVDO) post-switch
+ATTRS{idVendor}=="201e", ATTRS{idProduct}=="1022", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Haier CE 100  pre-switch
+ATTRS{idVendor}=="201e", ATTRS{idProduct}=="2009", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# SpeedUp SU-8000U pre-switch
+ATTRS{idVendor}=="2020", ATTRS{idProduct}=="f00e", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# SpeedUp SU-8000U post-switch
+ATTRS{idVendor}=="2020", ATTRS{idProduct}=="1005", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# SpeedUp SU-8000U post-switch
+ATTRS{idVendor}=="2020", ATTRS{idProduct}=="1008", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# StrongRising (China Telcom), Air FlexiNet pre-switch
+ATTRS{idVendor}=="21f5", ATTRS{idProduct}=="1000", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# StrongRising (China Telcom), Air FlexiNet post-switch
+ATTRS{idVendor}=="21f5", ATTRS{idProduct}=="2008", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Linktop LW272/LW273 (BSNL Teracom) pre-switch
+ATTRS{idVendor}=="230d", ATTRS{idProduct}=="0001", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Visiontek 82GH 3G pre-switch
+ATTRS{idVendor}=="230d", ATTRS{idProduct}=="0007", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# TP-Link MA-180 pre-switch
+ATTRS{idVendor}=="2357", ATTRS{idProduct}=="f006", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# TP-Link MA-180 during switch
+ATTRS{idVendor}=="2357", ATTRS{idProduct}=="0200", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick"
+
+# TP-Link MA-180 post-switch
+ATTRS{idVendor}=="2357", ATTRS{idProduct}=="0201", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Exiss Mobile E-190 series (made by C-motech) pre-switch
+ATTRS{idVendor}=="8888", ATTRS{idProduct}=="6500", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Exiss Mobile E-190 series (made by C-motech) post-switch
+ATTRS{idVendor}=="16d8", ATTRS{idProduct}=="6533", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+###########################
+##extra stick added  ######
+###########################
+
+# Olivetti Olicard 200 post-switching (change idProduct)
+ATTRS{idVendor}=="0b3c", ATTRS{idProduct}=="c005", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Airprime, Incorporated Sierra AT&T (US1777) post switch (pre-switch=1199/0fff)
+ATTRS{idVendor}=="0f3d", ATTRS{idProduct}=="68a3", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra AT&T AirCard 313U post-switching (pre-switch=1199/0fff)
+ATTRS{idVendor}=="0f3d", ATTRS{idProduct}=="68aa", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Pantech UML290VW
+ATTRS{idVendor}=="106c", ATTRS{idProduct}=="3b07", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Pantech UML290VW
+ATTRS{idVendor}=="106c", ATTRS{idProduct}=="3b08", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# UTStarcom UM150VW
+ATTRS{idVendor}=="106c", ATTRS{idProduct}=="3711", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# UTStarcom UM175 post-switching
+ATTRS{idVendor}=="106c", ATTRS{idProduct}=="3714", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Pantech UML290VW post-switching (change idProduct)
+ATTRS{idVendor}=="106c", ATTRS{idProduct}=="3718", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra USB 598
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="0025", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra devices (specific driver) post-switching (change idProduct) - actually directly managed by kernel 2.6.27
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="6890", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra AirCard 310U post-switching
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="68a3", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Sierra AirCard 313U post-switching
+ATTRS{idVendor}=="1199", ATTRS{idProduct}=="68aa", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei E585   (Mifi) post-switching (change idProduct)
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1408", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei E5832s (Mifi) post-switching (change idProduct)
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="142d", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Huawei E510 Partner TV (same product id before and after switch)
+ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1411", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Novatel Mifi 2200
+ATTRS{idVendor}=="1410", ATTRS{idProduct}=="1520", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Novatel USB551L (Verizon)
+ATTRS{idVendor}=="1410", ATTRS{idProduct}=="b001", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF100 post-switching (change idProduct)
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="0039", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE MF652, post-switching (change idProduct) ex: Drei Austria pid=1520
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="1522", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# D-Link DWR-510 pre-switch
+ATTRS{idVendor}=="2001", ATTRS{idProduct}=="a805", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# D-Link DWR-510 post-switch
+ATTRS{idVendor}=="2001", ATTRS{idProduct}=="7e12", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# ZTE devices post-switching (change idProduct) ex ZTE MF60
+ATTRS{idVendor}=="19d2", ATTRS{idProduct}=="2004", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+# Franklin Wireless U600
+ATTRS{idVendor}=="1fac", ATTRS{idProduct}=="0150", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="modem", ENV{JUBA_STR_MODEM_TYPE}="stick", IMPORT{program}="ujuba_modem"
+
+LABEL="ujuba_modem_rules_end"
+

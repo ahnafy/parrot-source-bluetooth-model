@@ -1,0 +1,11 @@
+########################################################
+# Olivetti Olicard 200
+
+#DefaultVendor= 0x0b3c
+#DefaultProduct=0xf000
+
+ModMan_TimeOut2Ready=
+ModMan_TimeOut2Unplugged=
+ModMan_ttyCount=5
+ModMan_tty4chat=4  # tty (name could change) counting from 1 (i.e. 10 = 10th tty = ttyUSB9 if starting from ttyUSB0)
+ModMan_tty4ppp=5   # tty (name could change) counting from 1 (i.e. 10 = 10th tty = ttyUSB9 if starting from ttyUSB0)

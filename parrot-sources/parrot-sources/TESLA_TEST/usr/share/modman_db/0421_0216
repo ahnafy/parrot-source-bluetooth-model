@@ -1,0 +1,13 @@
+########################################################
+#  Nokia Nokia N86 8MP
+
+#DefaultVendor= 0x0421
+#DefaultProduct=0x0216
+
+#ModMan_TimeOut2Ready=
+#ModMan_TimeOut2Unplugged=
+ModMan_ttyCount=1
+ModMan_tty4chat=1   # first chattable tty was ttyACM0
+#ModMan_tty4ppp=
+#ModMan_useEcho=
+#ModMan_pppdExtraOpts=

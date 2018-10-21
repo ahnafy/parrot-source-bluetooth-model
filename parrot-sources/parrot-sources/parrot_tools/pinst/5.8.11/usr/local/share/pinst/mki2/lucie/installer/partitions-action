@@ -1,0 +1,5 @@
+#<name> <action>    [mount_point]
+main_boot create
+alt_boot  create
+system    create /
+data      create /data

@@ -1,0 +1,15 @@
+########################################################
+# Novatel U760
+# post-switched config file from 1410:5030
+# Ex Verizon USB760 = Novatel Wireless CDMA
+
+#DefaultVendor= 0x1410
+#DefaultProduct=0x5030
+#TargetVendor=  0x1410
+#TargetProduct= 0x6000
+
+ModMan_TimeOut2Ready=
+ModMan_TimeOut2Unplugged=
+ModMan_ttyCount=4 # counting from 1 (i.e. 11 = typically ttyUSB0 to ttyUSB10)
+ModMan_tty4chat=1 # counting from 1 (i.e. 10 = 10th tty = ttyUSB9 if starting from ttyUSB0)
+ModMan_tty4ppp=  # counting from 1 (i.e. 10 = 10th tty = ttyUSB9 if starting from ttyUSB0)

@@ -1,0 +1,13 @@
+########################################################
+# Sony Ericsson Vivaz
+
+#DefaultVendor= 0fce
+#DefaultProduct=d133
+
+#ModMan_TimeOut2Ready=
+#ModMan_TimeOut2Unplugged=
+ModMan_ttyCount=4
+ModMan_tty4chat=2   # first chattable tty was ttyACM1
+#ModMan_tty4ppp=
+#ModMan_useEcho=
+#ModMan_pppdExtraOpts=

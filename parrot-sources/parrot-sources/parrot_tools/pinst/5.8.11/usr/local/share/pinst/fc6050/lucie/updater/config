@@ -1,0 +1,15 @@
+#############################################
+# Main installer builder configuration file
+# Syntax is Bourne-shell compliant
+#############################################
+
+install_bootloader=0
+install_updater=1
+
+installer_mode="update"
+
+# Target installer run-time updater name
+# None selected if empty string specified
+# Syntax :
+# updater_type="<install_type>"|""
+#updater_type="updater"

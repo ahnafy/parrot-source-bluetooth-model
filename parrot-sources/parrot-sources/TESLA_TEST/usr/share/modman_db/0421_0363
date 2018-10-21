@@ -1,0 +1,13 @@
+########################################################
+# Nokia C1-02
+# When Ovi suite selected
+#DefaultVendor= 0x0421
+#DefaultProduct=0x0363
+
+ModMan_TimeOut2Ready=1
+ModMan_TimeOut2Unplugged=1
+ModMan_ttyCount=1 # counting from 1 (i.e. 11 = typically ttyUSB0 to ttyUSB10)
+ModMan_tty4chat=1 # counting from 1 (i.e. 10 = 10th tty = ttyUSB9 if starting from ttyUSB0)
+ModMan_tty4ppp=1 # counting from 1 (i.e. 10 = 10th tty = ttyUSB9 if starting from ttyUSB0)
+#ModMan_useEcho=0 # Even if asked, this device, won't echo commands, have to deal with that
+#ModMan_pppdExtraOpts=novj

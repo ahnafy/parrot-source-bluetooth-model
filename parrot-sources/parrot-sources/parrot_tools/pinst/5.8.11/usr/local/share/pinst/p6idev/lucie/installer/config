@@ -1,0 +1,22 @@
+#############################################
+# Main installer builder configuration file
+# Syntax is Bourne-shell compliant
+#############################################
+
+# Install bootloader on target
+install_bootloader=1
+# Install updater on target
+install_updater=0
+
+# Installer mode, source selection could be :
+# - "usbd" for usb device
+# - "mmc" for sdcard
+# - "usb-storage" for usb key
+# - "update" for making an updater (the source will be on sources file)
+installer_mode="usbd"
+
+# Target installer run-time updater name
+# None selected if empty string specified
+# Syntax :
+# updater_type="<install_type>"|""
+#updater_type="updater"

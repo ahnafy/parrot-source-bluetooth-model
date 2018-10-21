@@ -1,0 +1,14 @@
+# This file contains the rules for USB ethernet device when on usb device mode. -*- mode:sh -*-
+
+# skip rules on already handled devices; note that 'ethernet' is not a valid
+# device type for now
+ENV{JUBA_STR_DEV_TYPE}=="ethernet", GOTO="ujuba_ethernet_usbdevice_start"
+ENV{JUBA_STR_DEV_TYPE}=="?*", GOTO="ujuba_ethernet_usbdevice_end"
+
+LABEL="ujuba_ethernet_usbdevice_start"
+
+SUBSYSTEM=="net", ACTION=="add", KERNEL=="usb*", DEVTYPE=="gadget", RUN="/etc/ethernet/ifup.sh %k"
+SUBSYSTEM=="net", ACTION=="remove", KERNEL=="usb*", RUN="/etc/ethernet/ifdown.sh %k"
+
+LABEL="ujuba_ethernet_usbdevice_end"
+

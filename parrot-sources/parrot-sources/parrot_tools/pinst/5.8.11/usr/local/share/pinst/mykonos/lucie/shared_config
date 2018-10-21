@@ -1,0 +1,26 @@
+plateform=PTA_P6
+
+application=PA_MYKONOS
+
+# Target installer run-time kernel command line
+# This is the way to define any kernel
+# configuration items you may want. Refer to kernel documentation for syntax
+# requirements.
+# A good starting point is kernel-parameters.txt in the kernel
+# source Documentation directory.
+# Syntax :
+# installer_kernel_cmdline="<cmdline>"
+installer_kernel_cmdline="console=ttyPA0,115200 loglevel=8"
+
+# Applicative system kernel command line
+# This is the way to define any kernel
+# configuration items you may want. Refer to kernel documentation for syntax
+# requirements.
+# A good starting point is kernel-parameters.txt in the kernel
+# source Documentation directory.
+# Syntax :
+# system_kernel_cmdline="<cmdline>"
+system_kernel_cmdline=\
+"console=ttyPA0,115200 loglevel=4 "\
+"ubi.mtd=Pfactory,2048 "\
+"ubi.mtd=Psystem,2048 ubi.mtd=Pupdate,2048 root=ubi1:system rootfstype=ubifs parrot5.low_latency=1"

@@ -1,0 +1,11 @@
+#######################################################
+# Option HSO device
+
+#DefaultVendor=  0x0af0
+#DefaultProduct= 0x7701
+
+ModMan_TimeOut2Ready=13
+ModMan_TimeOut2Unplugged=1
+ModMan_ttyCount=11 # counting from 1 (i.e. 11 = typically ttyUSB0 to ttyUSB10)
+ModMan_tty4chat=10 # counting from 1 (i.e. 10 = 10th tty = ttyUSB9 if starting from ttyUSB0)
+

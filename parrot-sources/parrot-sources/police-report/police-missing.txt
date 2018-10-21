@@ -1,0 +1,10 @@
+*****UNKNOWN*****
+Appli/CommonSoft/Buto/src
+Appli/OS/ParrotCodec/codec
+Appli/OS/ParrotCodec/codec/products
+Appli/OS/ParrotCodec/devs/common
+Appli/OS/ParrotCodec/devs/i2c
+Appli/OS/ParrotCodec/devs/usb
+Linux/parrot_libs/mqueue/src
+*****SEE-NOTICE*****
+*****GUESSED*****

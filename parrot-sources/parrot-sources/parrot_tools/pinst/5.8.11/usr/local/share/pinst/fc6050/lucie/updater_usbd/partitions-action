@@ -1,0 +1,6 @@
+#<name> <action>    [mount_point]
+main_boot autoresize
+alt_boot  autoresize
+history   autoresize
+system    create /
+

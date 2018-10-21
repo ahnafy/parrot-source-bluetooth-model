@@ -1,0 +1,27 @@
+# This file contains the rules for USB ethernet dongles. -*- mode:sh -*-
+
+# skip rules on already handled devices; note that 'ethernet' is not a valid
+# device type for now
+ENV{JUBA_STR_DEV_TYPE}=="ethernet", GOTO="ujuba_ethernet_start"
+ENV{JUBA_STR_DEV_TYPE}=="?*", GOTO="ujuba_ethernet_end"
+
+LABEL="ujuba_ethernet_start"
+
+# Automatically load USB dongles drivers
+
+# D-Link DUB-E100
+ACTION=="add|change", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="2001", ATTR{idProduct}=="3c05", ENV{JUBA_STR_DEV_TYPE}="ethernet", RUN="/etc/ethernet/modprobe.sh usbnet asix"
+SUBSYSTEM=="net", ACTION=="add|change", ATTRS{idVendor}=="2001", ATTRS{idProduct}=="3c05", ENV{JUBA_STR_DEV_TYPE}="ethernet"
+
+# TrendNet TU2-ET100
+ACTION=="add|change", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="0b95", ATTR{idProduct}=="7720", ENV{JUBA_STR_DEV_TYPE}="ethernet", RUN="/etc/ethernet/modprobe.sh usbnet asix"
+SUBSYSTEM=="net", ACTION=="add|change", ATTRS{idVendor}=="0b95", ATTRS{idProduct}=="7720", ENV{JUBA_STR_DEV_TYPE}="ethernet"
+
+# Micrel KSZ8851SNL spi chip support
+SUBSYSTEM=="net", ACTION=="add", KERNEL=="eth*", DRIVERS=="ksz8851snl", ENV{ETHERNET_DRIVER}="$driver"
+
+# Configure interface
+SUBSYSTEM=="net", ACTION=="add", ENV{JUBA_STR_DEV_TYPE}=="ethernet", RUN="/etc/ethernet/ifup.sh %k $env{ETHERNET_DRIVER}"
+SUBSYSTEM=="net", ACTION=="remove", ENV{JUBA_STR_DEV_TYPE}=="ethernet", RUN="/etc/ethernet/ifdown.sh %k"
+
+LABEL="ujuba_ethernet_end"

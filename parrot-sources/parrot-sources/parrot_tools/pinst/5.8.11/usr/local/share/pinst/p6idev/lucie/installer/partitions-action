@@ -1,0 +1,6 @@
+#<name> <action>    [mount_point]
+main_boot create
+alt_boot  create
+factory   create /factory
+system    create /
+app       create /app

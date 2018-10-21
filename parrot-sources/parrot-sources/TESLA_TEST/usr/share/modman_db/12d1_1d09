@@ -1,0 +1,13 @@
+########################################################
+#  HuaWei ET127/158/128-2
+
+#DefaultVendor= 0x12d1
+#DefaultProduct=0x1d09
+
+#ModMan_TimeOut2Ready=
+#ModMan_TimeOut2Unplugged=
+ModMan_ttyCount=3
+ModMan_tty4chat=3   # first chattable tty was ttyACM2
+#ModMan_tty4ppp=
+#ModMan_useEcho=
+#ModMan_pppdExtraOpts=

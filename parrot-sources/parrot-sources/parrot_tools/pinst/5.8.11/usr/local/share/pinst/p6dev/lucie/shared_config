@@ -1,0 +1,33 @@
+# Target installer run-time and applicative system hardware plateform
+# Syntax :
+# ex : plateform=PTA_P6
+plateform=PTA_P6
+
+# Applicative system type
+# Default is empty string
+# Syntax :
+# ex : application=PA_P6DEV
+application=PA_P6DEV
+
+# Target installer run-time kernel command line
+# This is the way to define any kernel
+# configuration items you may want. Refer to kernel documentation for syntax
+# requirements.
+# A good starting point is kernel-parameters.txt in the kernel
+# source Documentation directory.
+# Syntax :
+# installer_kernel_cmdline="<cmdline>"
+installer_kernel_cmdline="console=ttyPA0,115200 loglevel=8"
+
+# Applicative system kernel command line
+# This is the way to define any kernel
+# configuration items you may want. Refer to kernel documentation for syntax
+# requirements.
+# A good starting point is kernel-parameters.txt in the kernel
+# source Documentation directory.
+# Syntax :
+# system_kernel_cmdline="<cmdline>"
+system_kernel_cmdline=\
+"console=ttyPA0,115200 loglevel=5 "\
+"ubi.mtd=Pfactory,2048 "\
+"ubi.mtd=Psystem,2048 root=ubi1:system rootfstype=ubifs"

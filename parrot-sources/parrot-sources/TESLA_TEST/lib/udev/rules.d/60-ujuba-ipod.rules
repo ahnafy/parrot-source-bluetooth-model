@@ -1,0 +1,21 @@
+# This file contains the rules needed to handle iPods. -*- mode:sh -*-
+
+# skip rules on already handled devices
+ENV{JUBA_STR_DEV_TYPE}=="ipod", GOTO="ujuba_ipod_start"
+ENV{JUBA_STR_DEV_TYPE}=="?*", GOTO="ujuba_ipod_end"
+
+LABEL="ujuba_ipod_start"
+
+# mark the entire ipod device tree as handled
+ACTION=="add", ATTRS{idVendor}=="05ac", ATTRS{idProduct}=="12*", ENV{JUBA_STR_DEV_TYPE}="ipod"
+
+# notify the parent usb device with devtype "ipodusb"; this is useful for
+# matching several subdevices (hidraw, audio, etc)
+ACTION=="add", ENV{DEVTYPE}=="usb_device", ENV{JUBA_STR_DEV_TYPE}=="ipod", ENV{JUBA_NOTIFY}!="?*", TAG+="JUBA", ENV{JUBA_STR_DEV_TYPE}="ipodusb", IMPORT{program}="ujuba_usb"
+# import JUBA_* variables for an hidraw device whose parent is an iPod
+ACTION=="add", KERNEL=="hidraw[0-9]", ENV{JUBA_STR_DEV_TYPE}=="ipod", ENV{JUBA_NOTIFY}!="?*", TAG+="JUBA", ENV{JUBA_STR_IPOD_BUSNUM}="$attr{busnum}", ENV{JUBA_STR_IPOD_DEVNUM}="$attr{devnum}", IMPORT{program}="ujuba_usb"
+
+# dummy rule for testing on a PC
+#KERNEL=="sd[a-z][0-9]", ACTION=="add", ATTRS{idVendor}=="05ac", ATTRS{idProduct}=="12*", ENV{JUBA_NOTIFY}!="?*", TAG+="JUBA", IMPORT{program}="ujuba_usb"
+
+LABEL="ujuba_ipod_end"

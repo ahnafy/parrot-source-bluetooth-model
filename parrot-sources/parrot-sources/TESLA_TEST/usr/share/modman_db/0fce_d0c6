@@ -1,0 +1,13 @@
+########################################################
+#  Sony Ericsson AAD-3252041-BV
+
+#DefaultVendor= 0x0fce
+#DefaultProduct=0xd0c6
+
+#ModMan_TimeOut2Ready=
+#ModMan_TimeOut2Unplugged=
+ModMan_ttyCount=2
+ModMan_tty4chat=2   # first chattable tty was ttyACM1
+#ModMan_tty4ppp=
+#ModMan_useEcho=
+#ModMan_pppdExtraOpts=

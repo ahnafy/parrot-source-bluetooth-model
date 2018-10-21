@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NetworkConfig version="1">
+  <Rules>
+    <Rule type="DONGLE_3G" gwPriority="2">
+      <Config type="auto" />
+    </Rule>
+    <Rule type="DUN" gwPriority="2">
+      <Config type="auto" />
+    </Rule>
+    <Rule type="PAN_AP" ctPriority="2">
+      <Config type="auto" ip="192.168.11.1" leases="15" />
+    </Rule>
+    <Rule type="PAN_USER" gwPriority="2">
+      <Config type="auto" />
+    </Rule>
+    <Rule type="WIFI_AP" ctPriority="2">
+      <Config type="auto" ip="192.168.12.1" leases="20" />
+    </Rule>
+    <Rule type="WIFI_CLIENT" gwPriority="2">
+      <Config type="auto" />
+    </Rule>
+    <Rule type="TETHERING_USB" gwPriority="2">  
+      <Config type="auto" />
+    </Rule>
+    <Rule type="GSM_MODEM" gwPriority="2">
+      <Config type="auto" />
+    </Rule>
+    <Rule type="HOST" ctPriority="1" gwPriority="1">
+      <Config type="none" />
+    </Rule>
+    <Rule type="UNKNOWN" gwPriority="2">
+      <Config type="none" />
+    </Rule>
+  </Rules>
+</NetworkConfig>

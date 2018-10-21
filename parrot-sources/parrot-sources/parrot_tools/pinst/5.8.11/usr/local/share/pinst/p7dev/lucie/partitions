@@ -1,0 +1,9 @@
+flash_size=512M
+
+#<name>     <device_id> <type>  <partition_id>  <size>
+bootloader  0           RAW     0               8M
+main_boot   1           UBI     0               8M
+alt_boot    1           UBI     1               8M
+factory     2           UBIFS   0               8M
+system      3           UBIFS   0               32M
+app			4			UBIFS	0				-

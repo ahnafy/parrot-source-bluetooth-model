@@ -1,0 +1,9 @@
+#############################################
+# Main installer builder configuration file
+# Syntax is Bourne-shell compliant
+#############################################
+
+install_bootloader=1
+install_updater=1
+
+installer_mode="update"

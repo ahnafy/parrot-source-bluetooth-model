@@ -1,0 +1,15 @@
+########################################################
+# ZTE MF637 
+# post-switched config file, ex Alcatel X220L (P1735)
+
+#DefaultVendor= 0x19d2
+#DefaultProduct= 0x0110
+#TargetVendor= 0x19d2
+#TargetProduct= 0x0121
+
+ModMan_TimeOut2Ready=
+ModMan_TimeOut2Unplugged=
+ModMan_ttyCount=7
+ModMan_tty4chat=5 # counting from 1 (i.e. 10 = 10th tty = ttyUSB9 if starting from ttyUSB0)
+ModMan_tty4ppp=5 # counting from 1 (i.e. 10 = 10th tty = ttyUSB9 if starting from ttyUSB0)
+
